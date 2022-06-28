@@ -1,0 +1,22 @@
+img {
+  width: 350px;
+  /* width: 200px;  */
+  float: left;
+  flex-direction: column-reverse;
+  margin-right: 10px;
+}
+
+button {
+  /* background-color: lightgrey;
+    color: black; */
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 400 !important;
+  background-color: "#F00000";
+  color: black;
+  padding: 8px 20px;
+  margin: auto;
+  text-align: center;
+  display: inline-block !important;
+  text-decoration: none;
+}
