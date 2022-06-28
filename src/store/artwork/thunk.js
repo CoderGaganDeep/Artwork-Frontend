@@ -4,7 +4,7 @@ import {
   fetchArtworkSuccess,
   fetchArtworkByIdSuccess,
   incrementHeartSuccess,
-  postNewBidSuccess,
+  postNewBidSucess,
 } from "./slice";
 
 //1. write a thunk to fetch all spaces
@@ -43,21 +43,5 @@ export const incrementHeart = (hearts) => async (dispatch, getState) => {
     dispatch(incrementHeartSuccess(response.data));
   } catch (error) {
     console.log("error from incrementHeartSuccess thunk:", error.message);
-  }
-};
-
-export const postNewBid = (value, storyId) => async (dispatch, getState) => {
-  try {
-    const userId = getState().user.profile.id;
-    const token = getState().user.token;
-    await axios.post(
-      `${apiUrl}/bids`,
-      { value, storyId, userId },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    // After the story being delete, update the MySpace
-    dispatch(fetchArtworkById(storyId));
-  } catch (error) {
-    console.log(error.message);
   }
 };

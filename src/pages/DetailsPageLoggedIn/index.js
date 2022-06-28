@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtworkById, postNewBid } from "../../store/artwork/thunk";
+import { fetchArtworkById } from "../../store/artwork/thunk";
+import { postNewBid } from "../../store/bid/thunk";
 import { selectorArtworksDetails } from "../../store/artwork/selector";
-import { selectToken } from "../../store/user/selectors";
+import { selectToken, selectUser } from "../../store/user/selectors";
 import { Artwork, ArtworkTitle } from "../../components/Artwork";
 import { useParams } from "react-router-dom";
 // import { HeroBanner } from "../../components/HeroBanner";
@@ -10,18 +11,44 @@ import { useParams } from "react-router-dom";
 export default function DetailsPageLoggedIn() {
   const dispatch = useDispatch();
   const artworksByIdSelector = useSelector(selectorArtworksDetails);
-  // const [hearts, setHearts] = useState("");
+
   const [value, setValue] = useState("");
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
 
-  const { artworkId } = useParams();
   const { id } = useParams();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("bid from page: ", value); // pass the bid, and the storyId
-    dispatch(postNewBid(value, artworkId));
+    console.log("bid from page: ", user.email, value, id);
+
+    let minCurrentBid = 0;
+
+    // check no bids
+    // code from : https://www.google.com/search?q=check+empty+property+javascript+if&oq=check+empty+property+javascript+if&aqs=chrome..69i57j0i22i30j0i390.16224j0j7&sourceid=chrome&ie=UTF-8
+    if (Object.keys(artworksByIdSelector.bids).length === 0) {
+      minCurrentBid = artworksByIdSelector.minimumBid;
+    } else {
+      artworksByIdSelector.bids.map((bid) => {
+        return minCurrentBid < bid.amount
+          ? (minCurrentBid = bid.amount)
+          : bid.amount;
+      });
+    }
+
+    if (value < minCurrentBid + 1) {
+      setValue("");
+      return (
+        <div>
+          <p>Invalid Bid, please be Highest!</p>
+        </div>
+      );
+    }
+
+    dispatch(postNewBid(user.email, value, id));
     setValue("");
   };
+
   useEffect(() => {
     dispatch(fetchArtworkById(id));
   }, [dispatch, id]);
