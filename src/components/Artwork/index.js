@@ -30,10 +30,11 @@ const Artwork = (props) => {
       <Link to={`/artworks/${props.id}`}>
         <button>See details</button>
       </Link>
-      <p>
+      <p> </p>
+      <h2>
         {" "}
         ❤️:{props.hearts} 🤑 :{props.minimumBid}
-      </p>
+      </h2>
     </div>
   );
 };
@@ -48,27 +49,33 @@ const ArtworkTitle = (prop) => {
         maxWidth: "1000px",
         margin: "30px auto",
         padding: "20px",
+        border: "dashed red",
+        borderCollapse: "collapse",
       }}
     >
-      <table
-        style={{
-          padding: "20px",
-          textAlign: "left",
-          width: "800",
-          border: "5px, solid",
-        }}
-      >
-        <tr>
-          <th>Eamil</th>
-          <th> </th>
-          <th>Bid</th>
-        </tr>
-        <tr>
-          <td>{prop.email}</td>
-          <td> </td>
-          <td>{prop.amount}</td>
-        </tr>
-      </table>
+      <ul style={{ listStyleType: "none" }}>
+        <li>
+          <table>
+            <tr>
+              <th>Bid</th>
+              <th>Bidder</th>
+              <th> </th>
+            </tr>
+            <tr>
+              <td>{prop.amount}</td>
+              <td>{prop.email}</td>
+              <td>
+                {" "}
+                <br />
+              </td>
+            </tr>
+            <br />
+          </table>
+        </li>
+        <li>
+          <table></table>
+        </li>
+      </ul>
     </div>
   );
 };

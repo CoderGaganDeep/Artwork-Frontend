@@ -15,9 +15,19 @@ export const artworkSlice = createSlice({
     fetchArtworkByIdSuccess: (state, action) => {
       state.artworkDetails = action.payload;
     },
+    incrementHeartSuccess: (state, action) => {
+      state.artworkDetails = action.payload;
+    },
+    postNewBidSuccess: (state, action) => {
+      state.artworkDetails = action.payload;
+    },
   },
 });
 
-export const { fetchArtworkSuccess, fetchArtworkByIdSuccess } =
-  artworkSlice.actions;
+export const {
+  fetchArtworkSuccess,
+  fetchArtworkByIdSuccess,
+  incrementHeartSuccess,
+  postNewBidSuccess,
+} = artworkSlice.actions;
 export default artworkSlice.reducer;
