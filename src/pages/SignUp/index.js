@@ -11,7 +11,8 @@ import { Col } from "react-bootstrap";
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isArtist, setisArtist] = useState("");
+
+  const [isArtist, setisArtist] = useState("false");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -22,6 +23,10 @@ export default function SignUp() {
       navigate("/");
     }
   }, [token, navigate]);
+
+  const handleChange = (event) => {
+    setisArtist(event.target.checked);
+  };
 
   function submitForm(event) {
     event.preventDefault();
@@ -61,14 +66,10 @@ export default function SignUp() {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-
+        {/* https://upmostly.com/tutorials/how-to-checkbox-onchange-react-js */}
+        {/* https://www.google.com/search?q=how+manage+states+checkbox+in+react+form&sxsrf=ALiCzsY0nlmi3BVd6j5II7mV_vrqP1BBPw%3A1656500690020&ei=0jG8YtZJ6Jb27w-MhI2ACg&ved=0ahUKEwjW-sr5wdL4AhVoi_0HHQxCA6AQ4dUDCA4&uact=5&oq=how+manage+states+checkbox+in+react+form&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABOgcIABBHELADOggIIRAeEBYQHToHCCEQChCgAUoECEEYAEoECEYYAFCCA1iMEWDDFmgBcAF4AIABpAeIAdcKkgEHMS4zLjYtMZgBAKABAcgBCMABAQ&sclient=gws-wiz */}
         <Form.Group controlId="formBasicisArtist">
-          <input
-            type="checkbox"
-            value={isArtist}
-            // onChange={(event) => setisArtist(true)}
-            onClick={() => setisArtist(true)}
-          />
+          <input type="checkbox" value={isArtist} onChange={handleChange} />
           <Form.Label>. I am an artist</Form.Label>
         </Form.Group>
 

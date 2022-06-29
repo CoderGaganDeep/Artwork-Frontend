@@ -8,7 +8,6 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Homepage from "./pages/HomePage";
-import DetailsPage from "./pages/DetailsPage";
 import DetailsPageLoggedIn from "./pages/DetailsPageLoggedIn";
 import AuctionPage from "./pages/AuctionPage";
 
