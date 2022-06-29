@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Homepage from "./pages/HomePage";
 import DetailsPage from "./pages/DetailsPage";
 import DetailsPageLoggedIn from "./pages/DetailsPageLoggedIn";
-import Auction from "./pages/Auction";
+import AuctionPage from "./pages/AuctionPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/artworks/:id" element={<DetailsPageLoggedIn />} />
         {/* <Route path="/other" element={<Other />} /> */}
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/auction" element={<Auction />} />
+        <Route path="/auction" element={<AuctionPage />} />
 
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -11,6 +11,7 @@ import { Col } from "react-bootstrap";
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isArtist, setisArtist] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -25,11 +26,12 @@ export default function SignUp() {
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(signUp(name, email, password));
+    dispatch(signUp(name, email, password, isArtist));
 
     setEmail("");
     setPassword("");
     setName("");
+    setisArtist("");
   }
 
   return (
@@ -60,14 +62,12 @@ export default function SignUp() {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId="formBasicisArtist">
           <input
             type="checkbox"
-
-            // onChange={(event) => setEmail(event.target.value)}
-            // type="checkbox"
-            // placeholder="Enter email"
-            // required
+            value={isArtist}
+            // onChange={(event) => setisArtist(true)}
+            onClick={() => setisArtist(true)}
           />
           <Form.Label>. I am an artist</Form.Label>
         </Form.Group>

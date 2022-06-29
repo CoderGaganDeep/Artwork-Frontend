@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtworkById } from "../../store/artwork/thunk";
+import { fetchArtworkById, incrementHeart } from "../../store/artwork/thunk";
 import { postNewBid } from "../../store/bid/thunk";
 import { selectorArtworksDetails } from "../../store/artwork/selector";
 import { selectToken, selectUser } from "../../store/user/selectors";
@@ -18,6 +18,11 @@ export default function DetailsPageLoggedIn() {
 
   const { id } = useParams();
 
+  const incrementHearts = (hearts) => {
+    incrementHeart(id, hearts);
+    dispatch(fetchArtworkById(id));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("bid from page: ", user.email, value, id);
@@ -26,16 +31,19 @@ export default function DetailsPageLoggedIn() {
 
     // check no bids
     // code from : https://www.google.com/search?q=check+empty+property+javascript+if&oq=check+empty+property+javascript+if&aqs=chrome..69i57j0i22i30j0i390.16224j0j7&sourceid=chrome&ie=UTF-8
+    // step 1: check if min bid is empty
+
     if (Object.keys(artworksByIdSelector.bids).length === 0) {
       minCurrentBid = artworksByIdSelector.minimumBid;
     } else {
+      // step2: check if current bid is smaller then minBid
       artworksByIdSelector.bids.map((bid) => {
         return minCurrentBid < bid.amount
           ? (minCurrentBid = bid.amount)
           : bid.amount;
       });
     }
-
+    // step 3 accept bid only if more than all bids
     if (value < minCurrentBid + 1) {
       setValue("");
       return (
@@ -62,13 +70,12 @@ export default function DetailsPageLoggedIn() {
 
   console.log(artworksByIdSelector);
 
-  // const { bids } = artworksByIdSelector;
-
   return (
     <>
       <h1 style={{ justifyContent: "center", textAlign: "center" }}>
         Encourage the Artist by clicking on Hearts{" "}
         <button
+          onClick={(event) => incrementHearts(artworksByIdSelector.hearts + 1)}
           style={{ backgroundColor: "#EEEEEE", border: "none" }}
           type="submit"
         >
@@ -137,6 +144,7 @@ export default function DetailsPageLoggedIn() {
                 );
               })}
             </td>
+            {/* works only if user is logged in */}
             {!token ? (
               ""
             ) : (
@@ -171,6 +179,7 @@ export default function DetailsPageLoggedIn() {
                     style={{ float: "right" }}
                     type="text"
                     value={value}
+                    // only number input
                     onChange={(event) => setValue(Number(event.target.value))}
                   />
 
