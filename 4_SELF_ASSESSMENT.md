@@ -2,17 +2,17 @@
 
 (This is a markdown .MD file, if you are reading this in vs-code, right click the file and select `Open Preview`)
 
-| Section                      | Max Points | Self   | Evaluator |
-| ---------------------------- | ---------- | ------ | --------- |
-| 0 Migrations, models & seeds | 8          | 8/8    | 0/8       |
-| 1 Artworks list              | 7          | 7/7    | 0/7       |
-| 2 Artwork details            | 4          | 4/4    | 0/4       |
-| 3 Giving hearts              | 5          | 1/5    | 0/5       |
-| 4 Bidding                    | 13         | 13/13  | 0/13      |
-| 5 Posting an artwork         | 11         | 0.5/11 | 0/11      |
-| 6 Signing up as an artist    | 7          | 0/7    | 0/7       |
-| 7 Finishing up               | 5          | 5/5    | 0/5       |
-| Total                        | 60         | 0/60   | 0/60      |
+| Section                      | Max Points | Self  | Evaluator |
+| ---------------------------- | ---------- | ----- | --------- |
+| 0 Migrations, models & seeds | 8          | 8/8   | 0/8       |
+| 1 Artworks list              | 7          | 7/7   | 0/7       |
+| 2 Artwork details            | 4          | 4/4   | 0/4       |
+| 3 Giving hearts              | 5          | 1/5   | 0/5       |
+| 4 Bidding                    | 13         | 13/13 | 0/13      |
+| 5 Posting an artwork         | 11         | 11/11 | 0/11      |
+| 6 Signing up as an artist    | 7          | 7/7   | 0/7       |
+| 7 Finishing up               | 5          | 5/5   | 0/5       |
+| Total                        | 60         | 56/60 | 0/60      |
 
 | 0. Criteria - Migrations, models & seeds                                   | Points | Self | Evaluator |
 | -------------------------------------------------------------------------- | ------ | ---- | --------- |
@@ -66,17 +66,17 @@
 | 5. Criteria - Posting an artwork                                                            | Points | Self | Evaluator |
 | ------------------------------------------------------------------------------------------- | ------ | ---- | --------- |
 | There is a link with `Start an auction` in the navbar                                       | 0.5    | 0.5  |           |
-| A user can only see this link when you are logged in and is an Artist                       | 1.5    |      |           |
-| Clicking `Start an auction` links to a page with a form                                     | 0.5    |      |           |
-| The form contains inputs for title, minimum bid & imageUrl                                  | 0.5    |      |           |
-| When the form is submitted a POST request is sent to the server                             | 1      |      |           |
-| An Authorization header is set in the request, and the endpoint works                       | 1      |      |           |
-| Auth middleware is used on the server side to authorize the request, and the endpoint works | 1      |      |           |
-| An artwork is created with the correct data and `userId`                                    | 2      |      |           |
-| `userId` is not sent in the body or as a param of the request                               | 1      |      |           |
-| The user sees a success message if the artwork was posted successfully                      | 2      |      |           |
+| A user can only see this link when you are logged in and is an Artist                       | 1.5    | 1.5  |           |
+| Clicking `Start an auction` links to a page with a form                                     | 0.5    | 0.5  |           |
+| The form contains inputs for title, minimum bid & imageUrl                                  | 0.5    | 0.5  |           |
+| When the form is submitted a POST request is sent to the server                             | 1      | 1    |           |
+| An Authorization header is set in the request, and the endpoint works                       | 1      | 1    |           |
+| Auth middleware is used on the server side to authorize the request, and the endpoint works | 1      | 1    |           |
+| An artwork is created with the correct data and `userId`                                    | 2      | 2    |           |
+| `userId` is not sent in the body or as a param of the request                               | 1      | 1    |           |
+| The user sees a success message if the artwork was posted successfully                      | 2      | 2    |           |
 | The success message is an alert, confirm or prompt popup or console.log                     | -1     |      |           |
-| Total                                                                                       | 11     |      |           |
+| Total                                                                                       | 11     | 11   |           |
 
 | 6. Criteria - Signing up as an artist                                              | Points | Self | Evaluator |
 | ---------------------------------------------------------------------------------- | ------ | ---- | --------- |
