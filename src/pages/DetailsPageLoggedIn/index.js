@@ -83,8 +83,6 @@ export default function DetailsPageLoggedIn() {
       </div>
     );
 
-  console.log(artworksByIdSelector);
-
   return (
     <>
       <h1 style={{ justifyContent: "center", textAlign: "center" }}>
@@ -129,15 +127,8 @@ export default function DetailsPageLoggedIn() {
           }}
         >
           <tr>
-            <th></th>
-            <th> </th>
-            <th></th>
-          </tr>
-          <tr>
-            {" "}
-            <td></td>
             <td>
-              {" "}
+              {/* fetch all artwork */}
               <Artwork
                 key={id}
                 title={artworksByIdSelector.title}
@@ -147,9 +138,9 @@ export default function DetailsPageLoggedIn() {
               />
             </td>
             <td>
-              {" "}
               {artworksByIdSelector.bids.map((bids) => {
                 return (
+                  // fetchs bids
                   <ArtworkTitle
                     key={bids.id}
                     id={bids.id}

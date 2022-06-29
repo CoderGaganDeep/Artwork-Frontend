@@ -36,6 +36,7 @@ export default function Homepage() {
             imageUrl={artwork.imageUrl}
             hearts={artwork.hearts}
             minimumBid={artwork.minimumBid}
+            numBids={artwork.bids.length}
             showLink={true}
           />
         );

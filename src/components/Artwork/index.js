@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const Artwork = (props) => {
   return (
+    // fetching all artworks
     <div
       style={{
         display: "flex",
@@ -31,13 +32,14 @@ const Artwork = (props) => {
         <button>See details</button>
       </Link>
       <p> </p>
-      <h2>
+      <p>
         {" "}
-        ❤️:{props.hearts} 🤑 :{props.minimumBid}
-      </h2>
+        ❤️:{props.hearts} 🤑 :{props.numBids}
+      </p>
     </div>
   );
 };
+// fetching all Bids by artwork id
 const ArtworkTitle = (prop) => {
   return (
     <div
@@ -59,21 +61,12 @@ const ArtworkTitle = (prop) => {
             <tr>
               <th>Bid</th>
               <th>Bidder</th>
-              <th> </th>
             </tr>
             <tr>
               <td>{prop.amount}</td>
               <td>{prop.email}</td>
-              <td>
-                {" "}
-                <br />
-              </td>
             </tr>
-            <br />
           </table>
-        </li>
-        <li>
-          <table></table>
         </li>
       </ul>
     </div>

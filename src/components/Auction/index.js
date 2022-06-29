@@ -5,14 +5,15 @@ import { showMessageWithTimeout } from "../../store/appState/actions";
 
 export default function Auction() {
   const dispatch = useDispatch();
+  // define attributes
   const [title, setTitle] = useState("");
   const [minimumBid, setMinimumBid] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit Action: ", newArtwork);
 
+    // output for submit
     dispatch(newArtwork(title, minimumBid, imageUrl));
     dispatch(
       showMessageWithTimeout(
@@ -26,6 +27,7 @@ export default function Auction() {
 
   return (
     <div>
+      {/* create Auction form */}
       <form
         onSubmit={handleSubmit}
         style={{
