@@ -2,17 +2,21 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../store/user/slice";
 import Button from "react-bootstrap/Button";
-import { selectUser } from "../../store/user/selectors";
+import { selectUser, selectToken } from "../../store/user/selectors";
 import Nav from "react-bootstrap/Nav";
 import NavbarItem from "./NavbarItem";
-import Auction from "../../pages/AuctionPage";
 
 export default function LoggedIn() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const token = useSelector(selectToken);
   return (
     <>
-      <NavbarItem path="/auction" linkText="Start an auction" />
+      {!token || !user || !user.isArtist ? (
+        ""
+      ) : (
+        <NavbarItem path="/auction" linkText="Start an auction" />
+      )}
 
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user?.email}</Nav.Item>
       <Button onClick={() => dispatch(logOut())}>Logout</Button>

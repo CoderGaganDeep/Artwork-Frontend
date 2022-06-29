@@ -80,12 +80,12 @@
 
 | 6. Criteria - Signing up as an artist                                              | Points | Self | Evaluator |
 | ---------------------------------------------------------------------------------- | ------ | ---- | --------- |
-| A separate migration is created to add a column `isArtist` to our users table      | 2      |      |           |
+| A separate migration is created to add a column `isArtist` to our users table      | 2      | 2    |           |
 | A checkbox is added to the signup form                                             | 1      | 1    |           |
-| The `signUp` action also sends a value for `isArtist` when posting to the server   | 1      |      |           |
-| When the checkbox is checked on signup, the user created has `isArtist: true`      | 2      |      |           |
-| When the checkbox is not checked on signup, the user created has `isArtist: false` | 1      |      |           |
-| Total                                                                              | 7      |      |           |
+| The `signUp` action also sends a value for `isArtist` when posting to the server   | 1      | 1    |           |
+| When the checkbox is checked on signup, the user created has `isArtist: true`      | 2      | 2    |           |
+| When the checkbox is not checked on signup, the user created has `isArtist: false` | 1      | 1    |           |
+| Total                                                                              | 7      | 7    |           |
 
 | 7. Criteria - Finishing up                                                 | Points | Self | Evaluator |
 | -------------------------------------------------------------------------- | ------ | ---- | --------- |

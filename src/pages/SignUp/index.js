@@ -23,7 +23,7 @@ export default function SignUp() {
       navigate("/");
     }
   }, [token, navigate]);
-
+  //https://stackoverflow.com/questions/39224165/set-checkbox-value-in-react-js
   const handleChange = (event) => {
     setisArtist(event.target.checked);
   };

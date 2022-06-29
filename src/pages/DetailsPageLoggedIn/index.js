@@ -44,7 +44,7 @@ export default function DetailsPageLoggedIn() {
       });
     }
     // step 3 accept bid only if more than all bids
-    if (value < minCurrentBid + 1) {
+    if ((value < minCurrentBid, 1)) {
       setValue("");
       return (
         <div>
@@ -75,7 +75,7 @@ export default function DetailsPageLoggedIn() {
       <h1 style={{ justifyContent: "center", textAlign: "center" }}>
         Encourage the Artist by clicking on Hearts{" "}
         <button
-          onClick={(event) => incrementHearts(artworksByIdSelector.hearts + 1)}
+          onClick={(event) => incrementHearts(artworksByIdSelector.hearts, 1)}
           style={{ backgroundColor: "#EEEEEE", border: "none" }}
           type="submit"
         >

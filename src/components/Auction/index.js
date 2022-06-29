@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { newArtwork } from "../../store/auction/thunk";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Auction() {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+  const [minimumBid, setMinimumBid] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submit Action: ", newArtwork);
+
+    dispatch(newArtwork(title, minimumBid, imageUrl));
+  };
+
   return (
     <div>
       <form
+        onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -27,17 +42,32 @@ export default function Auction() {
       >
         <label>
           Title:
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
         </label>
         <label>
           Minimum Bid:
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="minimumBid"
+            value={minimumBid}
+            onChange={(event) => setMinimumBid(event.target.value)}
+          />
         </label>
         <label>
           ImageUrl:
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="ImageUrl"
+            value={imageUrl}
+            onChange={(event) => setImageUrl(event.target.value)}
+          />
         </label>
-        <input type="submit" value="Start auction" />
+        <button type="submit">Start auction!</button>
       </form>
     </div>
   );
