@@ -6,6 +6,7 @@ import { fetchArtworkById } from "../artwork/thunk";
 export const postNewBid =
   (email, amount, artworkId) => async (dispatch, getState) => {
     try {
+      console.log("IN THUNK, trying to create a bid ");
       const token = getState().user.token;
       //2. make an axios request to `/${apiUrl}/space/${id}`
       const response = await axios.post(

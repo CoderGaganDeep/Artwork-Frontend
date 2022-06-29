@@ -6,7 +6,7 @@ import { selectorArtworksDetails } from "../../store/artwork/selector";
 import { selectToken, selectUser } from "../../store/user/selectors";
 import { Artwork, ArtworkTitle } from "../../components/Artwork";
 import { useParams } from "react-router-dom";
-// import { HeroBanner } from "../../components/HeroBanner";
+import { showMessageWithTimeout } from "../../store/appState/actions";
 
 export default function DetailsPageLoggedIn() {
   const dispatch = useDispatch();
@@ -44,16 +44,31 @@ export default function DetailsPageLoggedIn() {
       });
     }
     // step 3 accept bid only if more than all bids
-    if ((value < minCurrentBid, 1)) {
+    if (value < minCurrentBid + 1) {
       setValue("");
+      dispatch(
+        showMessageWithTimeout(
+          "danger",
+          true,
+          "Invalid Bid, please be Highest!",
+          15000
+        )
+      );
       return (
         <div>
           <p>Invalid Bid, please be Highest!</p>
         </div>
       );
     }
-
     dispatch(postNewBid(user.email, value, id));
+    dispatch(
+      showMessageWithTimeout(
+        "success",
+        false,
+        "Your Bid Added Successfully!",
+        15000
+      )
+    );
     setValue("");
   };
 

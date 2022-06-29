@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { newArtwork } from "../../store/auction/thunk";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { showMessageWithTimeout } from "../../store/appState/actions";
 
 export default function Auction() {
   const dispatch = useDispatch();
@@ -13,6 +14,14 @@ export default function Auction() {
     console.log("submit Action: ", newArtwork);
 
     dispatch(newArtwork(title, minimumBid, imageUrl));
+    dispatch(
+      showMessageWithTimeout(
+        "success",
+        true,
+        "New Artwork Created for Auction!",
+        15000
+      )
+    );
   };
 
   return (
